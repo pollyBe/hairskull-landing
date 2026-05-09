@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hairskull</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="shortcut icon" href="./assets/scissors-solid-full.svg" type="image/x-icon">
+<link rel="stylesheet" href="index.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeMobileNav()">О мастере</a>
+  <a href="#services" onclick="closeMobileNav()">Услуги</a>
+  <a href="#works" onclick="closeMobileNav()">Работы</a>
+  <a href="#courses" onclick="closeMobileNav()">Обучение</a>
+  <a href="#reviews" onclick="closeMobileNav()">Отзывы</a>
+  <a href="#contact" onclick="closeMobileNav()">Контакты</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">HAIRSKULL</a>
+  <ul class="nav-links">
+    <li><a href="#about">О мастере</a></li>
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#works">Работы</a></li>
+    <li><a href="#courses">Обучение</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Записаться</a>
+  <div class="burger" id="burger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left fade-in">
+    <div class="hero-tag">Минск · Стрижки · Обучение</div>
+    <h1 class="hero-h1">Парик&shy;махер&#8209;<em>скульп&shy;тор</em></h1>
+    <p class="hero-desc">Алексей Платун. Создаю стрижки, которые презирают расчёски. Вылеплю любую форму из ваших волос.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Записаться</a>
+      <a href="#courses" class="btn-ghost">Курсы обучения</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- ЗАМЕНИТЕ на: <img src="hero-photo.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;"> -->
+    <div class="hero-img-placeholder">
+      <div class="skull">☠</div>
+      <p>Фото мастера</p>
+    </div>
+  </div>
+  <!-- <div class="hero-scroll">Скролл</div> -->
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stat-cell fade-in">
+    <div class="stat-num">12+</div>
+    <div class="stat-label">Лет в профессии</div>
+  </div>
+  <div class="stat-cell fade-in">
+    <div class="stat-num">400+</div><!-- ЗАМЕНИТЕ на актуальное -->
+    <div class="stat-label">Работ в портфолио</div>
+  </div>
+  <div class="stat-cell fade-in">
+    <div class="stat-num">200+</div><!-- ЗАМЕНИТЕ на реальное -->
+    <div class="stat-label">Обученных мастеров</div>
+  </div>
+  <div class="stat-cell fade-in">
+    <div class="stat-num">On/Off</div>
+    <div class="stat-label">Форматы обучения</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div class="about-photo">
+        <!-- ЗАМЕНИТЕ на: <img src="alexey-portrait.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
+        <div class="about-photo-placeholder">
+          <span>Портрет мастера</span>
+        </div>
+      </div>
+      <div class="about-bio fade-in">
+        <div class="section-tag">О мастере</div>
+        <h2 class="section-h2" style="margin-bottom:32px;">Алексей <em>Платун</em></h2>
+        <div class="about-gold-line"></div>
+        <p><strong>Парикмахер-скульптор</strong> — работаю с волосом как с материалом. Читаю форму головы, структуру волоса и создаю стрижку, которая живёт своей жизнью без расчёски и укладочных средств.</p>
+        <p><!-- ДОБАВЬТЕ: история как пришли в профессию, что вдохновляет, в чём уникальность подхода. 3-4 предложения. --></p>
+        <p>Передаю свои техники другим мастерам офлайн и онлайн — потому что хорошее мастерство должно распространяться.</p>
+
+        <div class="achievements">
+          <div class="achievement-item">
+            <!-- ЗАМЕНИТЕ все блоки ниже на реальные достижения -->
+            <div class="achievement-year">20__</div>
+            <div class="achievement-text"><strong>TONI&CUY</strong> — описание</div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-year">20__</div>
+            <div class="achievement-text"><strong>TIGI Academy</strong> — описание</div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-year">20__</div>
+            <div class="achievement-text"><strong>Название достижения</strong> — описание</div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-year">20__</div>
+            <div class="achievement-text"><strong>Название достижения</strong> — описание</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <div class="section-tag">Услуги и цены</div>
+      <h2 class="section-h2">Что я <em>делаю</em></h2>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card fade-in">
+        <div class="service-num">01</div>
+        <div class="service-name">Мужская стрижка</div>
+        <div class="service-desc">Стандартная мужская стрижка</div>
+        <div class="service-price">60 BYN</div>
+        <div class="service-time">≈ 60 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">02</div>
+        <div class="service-name">Мужская стрижка</div>
+        <div class="service-desc">Чаще одного месяца</div>
+        <div class="service-price">55 BYN</div>
+        <div class="service-time">≈ 50 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">03</div>
+        <div class="service-name">Женская стрижка</div>
+        <div class="service-desc">Открытые уши</div>
+        <div class="service-price">80 BYN</div>
+        <div class="service-time">≈ 90 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">04</div>
+        <div class="service-name">Женская стрижка</div>
+        <div class="service-desc">Закрытые уши</div>
+        <div class="service-price">95 BYN</div>
+        <div class="service-time">≈ 90 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">05</div>
+        <div class="service-name">Женская стрижка</div>
+        <div class="service-desc">Чаще одного месяца</div>
+        <div class="service-price">60 BYN</div>
+        <div class="service-time">≈ 70 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">06</div>
+        <div class="service-name">Стрижка и дизайн бороды</div>
+        <div class="service-desc">Оформление и коррекция формы бороды</div>
+        <div class="service-price">65 BYN</div>
+        <div class="service-time">≈ 40 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">07</div>
+        <div class="service-name">Стрижка только насадками</div>
+        <div class="service-desc">Быстрая стрижка машинкой</div>
+        <div class="service-price">50 BYN</div>
+        <div class="service-time">≈ 30 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">08</div>
+        <div class="service-name">Детская стрижка</div>
+        <div class="service-desc">До 14 лет</div>
+        <div class="service-price">45 BYN</div>
+        <div class="service-time">≈ 45 мин</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="coloring">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <div class="section-tag">Окрашивание и уход</div>
+      <h2 class="section-h2">Hair <em>Color</em></h2>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card fade-in">
+        <div class="service-num">01</div>
+        <div class="service-name">Окрашивание корней</div>
+        <div class="service-desc">Обновление цвета у корней</div>
+        <div class="service-price">100–110 BYN</div>
+        <div class="service-time">≈ 120 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">02</div>
+        <div class="service-name">Корень и длина</div>
+        <div class="service-desc">Полное окрашивание волос</div>
+        <div class="service-price">150–180 BYN</div>
+        <div class="service-time">≈ 180 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">03</div>
+        <div class="service-name">Сложное окрашивание</div>
+        <div class="service-desc">50% головы</div>
+        <div class="service-price">170–250 BYN</div>
+        <div class="service-time">≈ 240 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">04</div>
+        <div class="service-name">Сложное окрашивание</div>
+        <div class="service-desc">100% головы</div>
+        <div class="service-price">250–500 BYN</div>
+        <div class="service-time">≈ 300 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">05</div>
+        <div class="service-name">Brazilian Blowout</div>
+        <div class="service-desc">Короткие волосы</div>
+        <div class="service-price">160–220 BYN</div>
+        <div class="service-time">≈ 120 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">06</div>
+        <div class="service-name">Brazilian Blowout</div>
+        <div class="service-desc">Средние волосы до плеч</div>
+        <div class="service-price">220–280 BYN</div>
+        <div class="service-time">≈ 180 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">07</div>
+        <div class="service-name">Brazilian Blowout</div>
+        <div class="service-desc">Длинные волосы</div>
+        <div class="service-price">280–360 BYN</div>
+        <div class="service-time">≈ 240 мин</div>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-num">08</div>
+        <div class="service-name">Brazilian Blowout</div>
+        <div class="service-desc">Чёлка</div>
+        <div class="service-price">90 BYN</div>
+        <div class="service-time">≈ 40 мин</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <div class="section-tag">Портфолио</div>
+      <h2 class="section-h2">Примеры <em>работ</em></h2>
+    </div>
+    <div class="works-grid">
+      <!-- ЗАМЕНИТЕ div.work-placeholder на <img src="workN.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
+      <div class="work-item"><div class="work-placeholder">Фото работы 1</div></div>
+      <div class="work-item"><div class="work-placeholder">Фото работы 2</div></div>
+      <div class="work-item"><div class="work-placeholder">Фото работы 3</div></div>
+      <div class="work-item"><div class="work-placeholder">Фото работы 4</div></div>
+      <div class="work-item"><div class="work-placeholder">Фото работы 5</div></div>
+    </div>
+    <div class="works-cta">
+      <a href="https://instagram.com/hairskull" target="_blank">Больше работ в Instagram →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <div class="section-tag">Обучение</div>
+      <h2 class="section-h2">Курсы для <em>мастеров</em></h2>
+    </div>
+    <p class="courses-intro"><!-- ДОБАВЬТЕ: 2-3 предложения о вашем подходе к обучению. Почему учите? Как строится процесс? --></p>
+    <div class="courses-grid">
+      <div class="course-card fade-in">
+        <div class="course-badge">Базовый</div>
+        <div class="course-name">С нуля до первого клиента</div>
+        <div class="course-desc"><!-- ДОБАВЬТЕ: программу курса. Что узнает студент, какие техники освоит, что получит на выходе. --></div>
+        <div class="course-details">
+          <div class="course-detail-row">
+            <span class="course-detail-label">Формат</span>
+            <span class="course-detail-val">Офлайн, Минск</span><!-- ЗАМЕНИТЕ -->
+          </div>
+          <div class="course-detail-row">
+            <span class="course-detail-label">Длительность</span>
+            <span class="course-detail-val">__ дней</span><!-- ЗАМЕНИТЕ -->
+          </div>
+          <div class="course-detail-row">
+            <span class="course-detail-label">Стоимость</span>
+            <span class="course-detail-val">от __ BYN</span><!-- ЗАМЕНИТЕ -->
+          </div>
+        </div>
+      </div>
+      <div class="course-card featured fade-in">
+        <div class="course-badge">Хит</div>
+        <div class="course-name">Скульптурные стрижки</div>
+        <div class="course-desc"><!-- ДОБАВЬТЕ: программу курса. --></div>
+        <div class="course-details">
+          <div class="course-detail-row">
+            <span class="course-detail-label">Формат</span>
+            <span class="course-detail-val">Офлайн / Онлайн</span>
+          </div>
+          <div class="course-detail-row">
+            <span class="course-detail-label">Длительность</span>
+            <span class="course-detail-val">__ дней</span>
+          </div>
+          <div class="course-detail-row">
+            <span class="course-detail-label">Стоимость</span>
+            <span class="course-detail-val">от __ BYN</span>
+          </div>
+        </div>
+      </div>
+      <div class="course-card fade-in">
+        <div class="course-badge">Онлайн</div>
+        <div class="course-name">Разборы и теория</div>
+        <div class="course-desc"><!-- ДОБАВЬТЕ: программу курса. --></div>
+        <div class="course-details">
+          <div class="course-detail-row">
+            <span class="course-detail-label">Формат</span>
+            <span class="course-detail-val">Онлайн</span>
+          </div>
+          <div class="course-detail-row">
+            <span class="course-detail-label">Длительность</span>
+            <span class="course-detail-val">Гибко</span>
+          </div>
+          <div class="course-detail-row">
+            <span class="course-detail-label">Стоимость</span>
+            <span class="course-detail-val">от __ BYN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="courses-stats fade-in">
+      <div class="course-stat">
+        <div class="course-stat-num">__+</div><!-- ЗАМЕНИТЕ на кол-во проведённых курсов -->
+        <div class="course-stat-label">Проведено курсов</div>
+      </div>
+      <div class="course-stat">
+        <div class="course-stat-num">__+</div><!-- ЗАМЕНИТЕ на кол-во студентов -->
+        <div class="course-stat-label">Обученных мастеров</div>
+      </div>
+      <div class="course-stat">
+        <div class="course-stat-num">RU/BY</div><!-- ЗАМЕНИТЕ на реальую географию -->
+        <div class="course-stat-label">География студентов</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <div class="section-tag">Отзывы</div>
+      <h2 class="section-h2">Говорят <em>клиенты</em></h2>
+    </div>
+    <div class="reviews-grid">
+      <!-- ЗАМЕНИТЕ на реальные отзывы -->
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">«Добавьте реальный отзыв клиента — желательно про конкретный результат, не общие слова.»</div>
+        <div class="review-author">Имя Фамилия</div>
+        <div class="review-role">Клиент</div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">«Отзыв мастера, прошедшего обучение — что изменилось в работе после курса.»</div>
+        <div class="review-author">Имя Фамилия</div>
+        <div class="review-role">Мастер, прошла курс</div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">«Отзыв постоянного клиента — почему возвращается именно к Алексею.»</div>
+        <div class="review-author">Имя Фамилия</div>
+        <div class="review-role">Постоянный клиент</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="max-w">
+    <div class="section-header fade-in">
+      <div class="section-tag">Контакты</div>
+      <h2 class="section-h2">Записаться или <em>спросить</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <p>Записаться на стрижку или узнать об обучении — пишите в Telegram. Отвечаю быстро.</p>
+        <div class="contact-links">
+          <a href="https://t.me/hairskulladmin" target="_blank" class="contact-link">
+            <div>
+              <div class="contact-link-label">Telegram</div>
+              <div class="contact-link-val">@hairskulladmin</div>
+            </div>
+            <div class="contact-link-arrow">→</div>
+          </a>
+          <a href="https://instagram.com/hairskull" target="_blank" class="contact-link">
+            <div>
+              <div class="contact-link-label">Instagram</div>
+              <div class="contact-link-val">@hairskull</div>
+            </div>
+            <div class="contact-link-arrow">→</div>
+          </a>
+          <a href="#" class="contact-link"><!-- ДОБАВЬТЕ адрес если есть -->
+            <div>
+              <div class="contact-link-label">Адрес</div>
+              <div class="contact-link-val">Минск, ул. Мележа, 1 оф. 303</div>
+            </div>
+            <div class="contact-link-arrow">→</div>
+          </a>
+          <a href="tel:+375__________" class="contact-link"><!-- ДОБАВЬТЕ телефон если нужен -->
+            <div>
+              <div class="contact-link-label">Телефон</div>
+              <div class="contact-link-val">+375 __ ___ __ __</div>
+            </div>
+            <div class="contact-link-arrow">→</div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form fade-in">
+        <h3>Оставить заявку</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Имя</label>
+            <input type="text" placeholder="Алексей">
+          </div>
+          <div class="form-group">
+            <label>Телефон / Telegram</label>
+            <input type="text" placeholder="+375 или @username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Тип записи</label>
+          <select>
+            <option value="">Выберите...</option>
+            <option>Стрижка</option>
+            <option>Окрашивание</option>
+            <option>Курс обучения — базовый</option>
+            <option>Курс обучения — продвинутый</option>
+            <option>Онлайн-обучение</option>
+            <option>Другое</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Комментарий</label>
+          <textarea placeholder="Пожелания, вопросы..."></textarea>
+        </div>
+        <button class="btn-gold" style="width:100%;" onclick="handleFormSubmit()">Отправить заявку</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">HAIRSKULL</div>
+  <div class="footer-copy">© 2026 Алексей Платун · Минск</div>
+  <div class="footer-links">
+    <a href="https://instagram.com/hairskull" target="_blank">Instagram</a>
+    <a href="https://t.me/hairskulladmin" target="_blank">Telegram</a>
+    <a href="#services">Услуги</a>
+    <a href="#courses">Обучение</a>
+  </div>
+</footer>
+
+<script src="./index.js"/>
+
+</body>
+</html>
