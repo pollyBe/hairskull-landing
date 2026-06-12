@@ -1,5 +1,9 @@
 export const navigation = [
   {
+    label: "Главная",
+    href: "/",
+  },
+  {
     label: "О мастере",
     href: "/about",
   },

@@ -6,8 +6,11 @@ import Container from "./Container";
 
 import { navigation } from "@/constants/navigation";
 import { socials } from "@/constants/socials";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
+  const pathname = usePathname();
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[rgba(8,8,8,0.92)] backdrop-blur-md">
       <Container>
@@ -21,13 +24,17 @@ export default function Header() {
 
           <nav className="hidden items-center gap-10 md:flex">
             {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)] transition-colors hover:text-[var(--gold)]"
-              >
-                {item.label}
-              </Link>
+              <Link key={item.href}
+              href={item.href}
+              className={cn(
+                "text-xs uppercase tracking-[0.2em] transition-colors",
+                pathname === item.href
+                  ? "text-[var(--gold)]"
+                  : "text-[var(--text-muted)] hover:text-[var(--gold)]"
+              )}
+            >
+              {item.label}
+            </Link>
             ))}
           </nav>
 

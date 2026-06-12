@@ -8,7 +8,7 @@ export default function SectionTitle({
   title,
 }: SectionTitleProps) {
   return (
-    <div className="mb-16">
+    <div className="mb-10">
       <div className="mb-4 flex items-center gap-4">
         <div className="h-px w-8 bg-[var(--gold)]" />
 

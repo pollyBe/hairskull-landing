@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import Container from "@/components/layout/Container";
@@ -6,6 +5,7 @@ import Button from "@/components/ui/Button";
 
 import { master } from "@/data/master";
 import StatCard from "../ui/StatCard";
+import { Badge } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -17,27 +17,19 @@ export default function HeroSection() {
               <div className="h-px w-10 bg-[var(--gold)]" />
 
               <span className="text-[10px] uppercase tracking-[0.3em] text-[var(--gold)]">
-                {master.city}
+                Минск
               </span>
             </div>
 
             <h1 className="font-serif text-6xl leading-none font-light md:text-7xl lg:text-8xl">
-              Алексей
-              <br />
-              <span className="italic text-[var(--gold)]">
-                Платун
-              </span>
+            {master.heroTitle}
             </h1>
 
             <p className="mt-8 max-w-xl text-lg text-[var(--text-muted)]">
-              {master.role}
+            {master.heroDescription}
             </p>
 
-            <p className="mt-6 max-w-xl leading-8 text-[var(--text-muted)]">
-              {master.shortBio}
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
+                        <div className="mt-10 flex flex-wrap gap-4">
               <Button asChild>
                 <Link href="/education">
                   Обучение
@@ -61,7 +53,7 @@ export default function HeroSection() {
             <div className="relative aspect-[4/5] overflow-hidden border border-[var(--border)] bg-[var(--surface)]">
             <div className="absolute -left-6 bottom-6 z-10 hidden max-w-[240px] md:block">
   <StatCard
-    value="12+"
+    value="15+"
     label="Лет опыта"
   />
 </div>

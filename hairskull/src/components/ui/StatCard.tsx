@@ -8,14 +8,40 @@ export default function StatCard({
   label,
 }: StatCardProps) {
   return (
-    <div className="border border-[var(--border)] bg-[rgba(8,8,8,0.85)] px-6 py-5 backdrop-blur-md">
-      <div className="font-serif text-4xl leading-none text-[var(--gold)]">
+    <article
+      className="
+        group
+        border
+        border-[var(--border)]
+        bg-[var(--surface)]
+        p-8
+        transition-all
+        duration-300
+        hover:border-[var(--gold-dim)]
+      "
+    >
+      <div
+        className="
+          font-serif
+          text-5xl
+          font-light
+          text-[var(--gold)]
+        "
+      >
         {value}
       </div>
 
-      <div className="mt-2 text-xs uppercase tracking-[0.15em] text-[var(--text-muted)]">
+      <div
+        className="
+          mt-3
+          text-xs
+          uppercase
+          tracking-[0.18em]
+          text-[var(--text-muted)]
+        "
+      >
         {label}
       </div>
-    </div>
+    </article>
   );
 }

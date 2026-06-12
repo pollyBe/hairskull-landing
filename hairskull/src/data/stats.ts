@@ -1,10 +1,21 @@
 export const stats = [
   {
-    value: "12+",
-    label: "Лет опыта",
+    value: "15+",
+    label: "лет практики",
   },
+
   {
-    value: "200+",
-    label: "Обученных мастеров",
+    value: "11",
+    label: "призовых мест",
+  },
+
+  {
+    value: "5",
+    label: "международных академий",
+  },
+
+  {
+    value: "2024",
+    label: "запуск Hair Skull",
   },
 ];
