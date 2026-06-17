@@ -19,13 +19,14 @@ export default function Button({
   return (
     <Comp
       className={cn(
-        "inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-[0.25em] transition-all duration-300",
+        // min-h-11 ensures 44px touch target on mobile
+        "inline-flex min-h-11 items-center justify-center px-6 py-3 text-xs uppercase tracking-[0.25em] transition-all duration-300 sm:px-8 sm:py-4",
 
         variant === "primary" &&
-          "bg-[var(--gold)] text-black hover:bg-[var(--gold-light)]",
+          "bg-[var(--gold)] text-black hover:bg-[var(--gold-light)] active:opacity-80",
 
         variant === "secondary" &&
-          "border border-[var(--border)] text-white hover:border-[var(--gold)] hover:text-[var(--gold)]",
+          "border border-[var(--border)] text-white hover:border-[var(--gold)] hover:text-[var(--gold)] active:opacity-80",
 
         className
       )}

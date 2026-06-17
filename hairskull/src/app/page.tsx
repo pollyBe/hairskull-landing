@@ -6,12 +6,12 @@ import EducationFormatsSection from "@/components/sections/EducationFormatsSecti
 import ContactSection from "@/components/sections/ContactSection";
 import HairSkullMethodSection from "@/components/sections/HairSkullMethodSection";
 import AboutPreviewSection from "@/components/sections/AboutPreviewSection";
-
+import ReviewsSection from "@/components/sections/ReviewsSection";
 
 export default function HomePage() {
   return (
     <>
-      <Header/>
+      <Header />
       <main>
         <HeroSection />
 
@@ -23,9 +23,11 @@ export default function HomePage() {
 
         <EducationFormatsSection />
 
+        <ReviewsSection />
+
         <ContactSection />
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }

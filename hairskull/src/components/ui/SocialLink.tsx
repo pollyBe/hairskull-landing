@@ -1,64 +1,35 @@
-import Link from "next/link";
-
 interface SocialLinkProps {
   label: string;
   value: string;
   href?: string;
 }
 
-export default function SocialLink({
-  label,
-  value,
-  href,
-}: SocialLinkProps) {
+export default function SocialLink({ label, value, href }: SocialLinkProps) {
+  const inner = (
+    <>
+      <span className="text-sm text-[var(--text-muted)]">{label}</span>
+      <span className="transition-colors group-hover:text-[var(--gold)]">
+        {value}
+      </span>
+    </>
+  );
+
   if (!href) {
     return (
-      <div
-        className="
-          flex
-          items-center
-          justify-between
-          border-b
-          border-[var(--border)]
-          py-6
-        "
-      >
-        <span className="text-sm text-[var(--text-muted)]">
-          {label}
-        </span>
-
-        <span>{value}</span>
+      <div className="flex items-center justify-between border-b border-[var(--border)] py-5 sm:py-6">
+        {inner}
       </div>
     );
   }
 
   return (
-    <Link
+    <a
       href={href}
       target="_blank"
-      className="
-        group
-        flex
-        items-center
-        justify-between
-        border-b
-        border-[var(--border)]
-        py-6
-        transition-colors
-      "
+      rel="noopener noreferrer"
+      className="group flex items-center justify-between border-b border-[var(--border)] py-5 transition-colors sm:py-6"
     >
-      <span className="text-sm text-[var(--text-muted)]">
-        {label}
-      </span>
-
-      <span
-        className="
-          transition-colors
-          group-hover:text-[var(--gold)]
-        "
-      >
-        {value}
-      </span>
-    </Link>
+      {inner}
+    </a>
   );
 }

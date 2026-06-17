@@ -1,18 +1,18 @@
 export const navigation = [
   {
-    label: "Главная",
-    href: "/",
+    label: "О мастере",
+    href: "#about",
   },
   {
-    label: "О мастере",
-    href: "/about",
+    label: "Методика",
+    href: "#method",
   },
   {
     label: "Обучение",
-    href: "/education",
+    href: "#education",
   },
   {
-    label: "Портфолио",
-    href: "/portfolio",
+    label: "Контакты",
+    href: "#contact",
   },
 ];

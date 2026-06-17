@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import Container from "./Container";
 
 import { navigation } from "@/constants/navigation";
@@ -9,26 +7,26 @@ export default function Footer() {
   return (
     <footer className="border-t border-[var(--border)] py-12">
       <Container>
-        <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
             <div className="font-serif text-xl tracking-[0.2em] text-[var(--gold)]">
               HAIRSKULL
             </div>
-
             <p className="mt-3 text-sm text-[var(--text-muted)]">
               Алексей Платун · Парикмахер-стилист · Преподаватель
             </p>
           </div>
 
-          <nav className="flex flex-col gap-3 md:flex-row md:gap-8">
+          {/* Nav — anchor links */}
+          <nav className="flex flex-wrap gap-x-8 gap-y-3">
             {navigation.map((item) => (
-              <Link
+              <a
                 key={item.href}
                 href={item.href}
                 className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--gold)]"
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
           </nav>
 
@@ -41,7 +39,6 @@ export default function Footer() {
             >
               Instagram
             </a>
-
             <a
               href={socials.telegram}
               target="_blank"

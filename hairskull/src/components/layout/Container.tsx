@@ -5,14 +5,11 @@ interface ContainerProps {
   className?: string;
 }
 
-export default function Container({
-  children,
-  className,
-}: ContainerProps) {
+export default function Container({ children, className }: ContainerProps) {
   return (
     <div
       className={cn(
-        "mx-auto w-full max-w-[1280px] px-6 lg:px-10",
+        "mx-auto w-full max-w-[1280px] px-5 sm:px-6 md:px-8 lg:px-10",
         className
       )}
     >
