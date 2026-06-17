@@ -1,11 +1,11 @@
-import { MetadataRoute } from "next";
+export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default function sitemap() {
   return [
     {
-      url: "https://hairskull.by",
+      url: "https://pollybe.github.io/hairskull-landing",
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 1,
     },
   ];
