@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* Fonts come from next/font CSS variables set on <html> (see app/fonts.ts) */
+@theme inline {
+  --font-sans:
+    var(--font-montserrat-latin), var(--font-montserrat-cyrillic),
+    ui-sans-serif, system-ui, sans-serif;
+  --font-serif:
+    var(--font-cormorant-latin), var(--font-cormorant-cyrillic), ui-serif,
+    Georgia, serif;
+}
+
+@theme {
+  --color-background: #080808;
+  --color-surface: #141414;
+  --color-surface-secondary: #1c1c1c;
+  --color-border: #2c2c2c;
+  --color-foreground: #f0ece4;
+  --color-muted: #cdc7bd;
+  --color-gold: #c9a84c;
+  --color-gold-light: #e0bd6a;
+  --color-gold-dark: #8a6f32;
+
+  /* Header height: h-header, scroll offset, hero min-height */
+  --spacing-header: 5rem;
+
+  --ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  --animate-enter: enter 0.7s var(--ease-soft) both;
+  --animate-rise: rise 0.7s var(--ease-soft) both;
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      translate: 0 16px;
+    }
+  }
+
+  /* Translate only: keeps LCP elements (h1) painted from the first frame */
+  @keyframes rise {
+    from {
+      translate: 0 16px;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-padding-top: var(--spacing-header);
+    scrollbar-color: var(--color-gold-dark) var(--color-background);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: black;
+  }
+}
+
+/*
+ * Scroll reveal (see components/ui/FadeIn.tsx).
+ * Content is hidden only when JS is running (html.js) and the user
+ * hasn't asked for reduced motion — without JS everything stays visible.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    transition:
+      opacity 0.6s var(--ease-soft),
+      translate 0.6s var(--ease-soft);
+  }
+
+  .js [data-reveal]:not([data-visible]) {
+    opacity: 0;
+  }
+
+  .js [data-reveal="up"]:not([data-visible]) {
+    translate: 0 24px;
+  }
+
+  .js [data-reveal="left"]:not([data-visible]) {
+    translate: -24px 0;
+  }
+}
+
+/* Mobile menu: native <dialog> sliding in from the right */
+@layer components {
+  .mobile-menu {
+    margin: 0 0 0 auto;
+    width: 18rem;
+    max-width: 100%;
+    height: 100dvh;
+    max-height: none;
+    translate: 100% 0;
+    transition:
+      translate 0.35s var(--ease-soft),
+      overlay 0.35s allow-discrete,
+      display 0.35s allow-discrete;
+  }
+
+  .mobile-menu[open] {
+    translate: 0 0;
+  }
+
+  @starting-style {
+    .mobile-menu[open] {
+      translate: 100% 0;
+    }
+  }
+
+  .mobile-menu::backdrop {
+    background: rgb(0 0 0 / 0);
+    backdrop-filter: blur(0);
+    transition:
+      background 0.3s,
+      backdrop-filter 0.3s,
+      overlay 0.3s allow-discrete,
+      display 0.3s allow-discrete;
+  }
+
+  .mobile-menu[open]::backdrop {
+    background: rgb(0 0 0 / 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  @starting-style {
+    .mobile-menu[open]::backdrop {
+      background: rgb(0 0 0 / 0);
+      backdrop-filter: blur(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu,
+    .mobile-menu::backdrop {
+      transition: none;
+    }
+  }
+}
