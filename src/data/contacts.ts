@@ -19,3 +19,10 @@ export const contacts = {
     value: `${master.city}, ${master.country}`,
   },
 } satisfies Record<string, ContactLink>;
+
+export const contactSection = {
+  sheetLabel: "ЛИСТ 06 — ОБУЧЕНИЕ И СОТРУДНИЧЕСТВО",
+  text: "Пройти обучение, организовать мастер-класс, провести образовательное мероприятие или обсудить сотрудничество — напишите удобным способом.",
+  handleAccent: "skull",
+  note: "пиши — разберём твою стрижку по косточкам",
+};

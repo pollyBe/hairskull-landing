@@ -1,19 +1,12 @@
 import type { NavItem } from "@/types/content";
 
-import { galleryItems } from "@/data/gallery";
-
 /** Anchors on the home page. Prefixed with "/" so they work from any route. */
 export const navigation: NavItem[] = [
-  { label: "О мастере", href: "/#about" },
+  { label: "Мастер", href: "/#about" },
   { label: "Методика", href: "/#method" },
-  { label: "Обучение", href: "/#education" },
-  { label: "Контакты", href: "/#contact" },
+  { label: "Работы", href: "/#works" },
+  { label: "Обучение", href: "/#edu" },
+  { label: "Контакты", href: "/#contacts" },
 ];
 
-export const hasPortfolio = galleryItems.length > 0;
-
-export const pages: NavItem[] = [
-  { label: "Биография", href: "/about" },
-  { label: "Курс Hair Skull", href: "/education" },
-  ...(hasPortfolio ? [{ label: "Портфолио", href: "/portfolio" }] : []),
-];
+export const navNumber = (index: number) => String(index + 1).padStart(2, "0");

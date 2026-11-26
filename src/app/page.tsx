@@ -3,8 +3,8 @@ import ContactSection from "@/components/sections/ContactSection";
 import EducationFormatsSection from "@/components/sections/EducationFormatsSection";
 import HairSkullMethodSection from "@/components/sections/HairSkullMethodSection";
 import HeroSection from "@/components/sections/HeroSection";
-import ReviewsSection from "@/components/sections/ReviewsSection";
-import StatsSection from "@/components/sections/StatsSection";
+import ToolsSection from "@/components/sections/ToolsSection";
+import WorksSection from "@/components/sections/WorksSection";
 import { contacts } from "@/data/contacts";
 import { master } from "@/data/master";
 import { site } from "@/data/site";
@@ -34,9 +34,9 @@ export default function HomePage() {
       <HeroSection />
       <AboutSection />
       <HairSkullMethodSection />
-      <StatsSection />
+      <WorksSection />
+      <ToolsSection />
       <EducationFormatsSection />
-      <ReviewsSection />
       <ContactSection />
     </>
   );

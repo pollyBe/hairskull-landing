@@ -1,64 +1,107 @@
-import Container from "@/components/layout/Container";
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+
+import Section from "@/components/layout/Section";
+import Button from "@/components/ui/Button";
 import FadeIn from "@/components/ui/FadeIn";
-import SectionTitle from "@/components/ui/SectionTitle";
-import { hairSkull, principles } from "@/data/hair-skull";
+import FigCaption from "@/components/ui/FigCaption";
+import SheetLabel from "@/components/ui/SheetLabel";
+import XrayOverlay from "@/components/ui/XrayOverlay";
+import { hairSkull, principles, xrayScheme } from "@/data/hair-skull";
+import { cn } from "@/lib/utils";
+import type { Principle } from "@/types/content";
 
 export default function HairSkullMethodSection() {
+  const [pinned, setPinned] = useState(false);
+  const [quoteLead, quoteAccent, quoteTail] = hairSkull.quote;
+  const [anatomy, adaptation, simplicity] = principles;
+
   return (
-    <section
-      id="method"
-      className="border-b border-border py-20 sm:py-24 lg:py-28"
+    <Section id="method">
+      <FadeIn className="flex flex-wrap items-end justify-between gap-10">
+        <div className="flex max-w-[820px] flex-col gap-5">
+          <SheetLabel>{hairSkull.sheetLabel}</SheetLabel>
+          <h2 className="font-display text-[clamp(44px,4.6vw,76px)] leading-[1.02] font-light italic">
+            {quoteLead}
+            <span className="text-gold">{quoteAccent}</span>
+            {quoteTail}
+          </h2>
+        </div>
+
+        <Button
+          variant="outline-gold"
+          aria-pressed={pinned}
+          aria-controls="method-xray"
+          onClick={() => setPinned((v) => !v)}
+          className="aria-pressed:bg-gold/10"
+        >
+          {pinned ? hairSkull.toggle.hide : hairSkull.toggle.show}
+        </Button>
+      </FadeIn>
+
+      <FadeIn
+        delay={0.1}
+        className="mt-14 grid gap-10 lg:grid-cols-[1fr_2fr_1fr]"
+      >
+        <div className="flex flex-col justify-between gap-10">
+          <PrincipleItem item={anatomy} accent />
+          <PrincipleItem item={adaptation} />
+        </div>
+
+        <figure
+          id="method-xray"
+          data-xray={pinned || undefined}
+          className="group relative order-first h-[520px] min-w-0 overflow-hidden lg:order-none lg:h-[720px]"
+        >
+          <Image
+            src={xrayScheme.photo}
+            alt={xrayScheme.photoAlt}
+            placeholder="blur"
+            sizes="(min-width: 1440px) 660px, (min-width: 1024px) 46vw, 100vw"
+            className="size-full object-cover transition-opacity duration-500 group-hover:opacity-25 group-data-xray:opacity-25 motion-reduce:transition-none"
+          />
+
+          <XrayOverlay
+            scheme={xrayScheme}
+            className="opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-data-xray:opacity-100 motion-reduce:transition-none"
+          />
+
+          <FigCaption>{xrayScheme.caption}</FigCaption>
+        </figure>
+
+        <div className="flex flex-col justify-between gap-10">
+          <PrincipleItem item={simplicity} />
+          <p className="text-[15px] leading-[1.8] font-light text-text-muted">
+            {hairSkull.description}
+          </p>
+        </div>
+      </FadeIn>
+    </Section>
+  );
+}
+
+function PrincipleItem({
+  item,
+  accent,
+}: {
+  item: Principle;
+  accent?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col gap-3 border-t pt-5",
+        accent ? "border-gold" : "border-line-3",
+      )}
     >
-      <Container>
-        <div className="max-w-4xl">
-          <FadeIn>
-            <SectionTitle
-              tag="Hair Skull"
-              title={
-                <>
-                  Авторская <em className="text-gold">методика</em>
-                </>
-              }
-            />
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <blockquote className="font-serif text-lg leading-snug text-gold italic sm:text-2xl md:text-3xl lg:text-4xl">
-              <p>
-                &ldquo;{hairSkull.quote[0]}
-                <br />
-                {hairSkull.quote[1]}&rdquo;
-              </p>
-            </blockquote>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <p className="mt-8 max-w-3xl text-base leading-7 text-muted sm:mt-10 sm:text-lg sm:leading-8">
-              {hairSkull.description}
-            </p>
-          </FadeIn>
-        </div>
-
-        <div className="mt-12 grid gap-4 sm:mt-16 sm:gap-6 lg:grid-cols-3">
-          {principles.map((item, i) => (
-            <FadeIn key={item.number} delay={i * 0.1}>
-              <article className="h-full border border-t-2 border-border border-t-gold bg-surface-secondary p-6 transition-colors duration-300 hover:border-gold sm:p-8 lg:p-10">
-                <div aria-hidden className="font-serif text-5xl text-gold">
-                  {item.number}
-                </div>
-
-                <h3 className="mt-6 font-serif text-3xl leading-tight font-medium sm:text-4xl">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 text-lg leading-8 text-foreground/90">
-                  {item.description}
-                </p>
-              </article>
-            </FadeIn>
-          ))}
-        </div>
-      </Container>
-    </section>
+      <h3 className="font-mono text-xs text-gold uppercase">
+        {item.number} / {item.title}
+      </h3>
+      <p className="font-display text-[30px] leading-[1.15]">
+        {item.description}
+      </p>
+    </div>
   );
 }

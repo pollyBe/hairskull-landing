@@ -8,6 +8,7 @@ Personal website for Alexey Platun, hairdresser-stylist and educator, author of 
 - **TypeScript** (strict)
 - **Tailwind CSS v4** — design tokens in `@theme` (`src/app/globals.css`)
 - **Fonts** — self-hosted via Fontsource + `next/font/local` (`src/app/fonts.ts`), no requests to Google
+- **Embla Carousel** — works slider (desktop; on mobile it's a native scroll-snap strip)
 - **Vercel** — hosting and deploys
 - **GitHub Actions** — CI: lint, typecheck, format check, build
 
@@ -39,7 +40,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ```
 src/
-├── app/                  # Routes: /, /about, /education, /portfolio
+├── app/                  # One-page landing: the only route is /
 │   ├── layout.tsx        # Fonts, global metadata, Header/Footer, skip link
 │   ├── globals.css       # Tailwind theme tokens, reveal & menu styles
 │   ├── sitemap.ts, robots.ts, opengraph-image.tsx, icon.svg
@@ -58,12 +59,18 @@ src/
 All texts, numbers and links live in `src/data`:
 
 - `stats.ts` — every number on the site (prize places are computed from `master.competitionResults`)
-- `contacts.ts` — Telegram / Instagram / location (one source for header, footer and contacts)
-- `master.ts` — bio and `photo` (set it to show a real photo instead of the placeholder)
-- `reviews.ts` — the reviews section appears automatically once the list is non-empty
-- `gallery.ts` — the portfolio page is `noindex` and hidden from the sitemap and footer while empty
+- `contacts.ts` — Telegram / Instagram / location (one source for header and contacts) + contacts section texts
+- `master.ts` — name, short bio, competition results
+- `hero.ts` — first screen
+- `hair-skull.ts` — method section, principles and the "see-through" scheme (illustration + note positions)
+- `works.ts` — works slider (photos and alt texts, in order)
+- `tools.ts` — tools strip
+- `education.ts` — education formats (texts, polaroid photos, captions)
+- `reviews.ts` — reviews; the section isn't on the page in the current design
 
-Images go to `public/images/…` and are referenced as `/images/…`.
+Handwritten notes (Caveat) are drafts awaiting the master's approval — they're marked `TODO` in these files.
+
+Images live in `src/assets/images/` and are used via static imports (`import img from "@/assets/images/…"`).
 
 ## Deploy (Vercel)
 
@@ -78,7 +85,6 @@ Add the production `*.vercel.app` URL as a URL-prefix property and verify it wit
 
 ## Pending
 
-- [ ] Real photos (`master.photo`, gallery)
 - [ ] Real reviews from students
 - [ ] Confirm Telegram and Instagram handles in `data/contacts.ts`
 - [ ] Set `NEXT_PUBLIC_SITE_URL` if a custom domain is ever connected
