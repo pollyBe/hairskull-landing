@@ -1,11 +1,8 @@
+import type { StaticImageData } from "next/image";
+
 export interface Stat {
   value: string;
   label: string;
-}
-
-export interface Photo {
-  src: string;
-  alt: string;
 }
 
 export interface ContactLink {
@@ -35,13 +32,16 @@ export interface EducationFormat {
   id: string;
   title: string;
   description: string;
+  photo: {
+    src: StaticImageData;
+    alt: string;
+    caption: string;
+    tilt: number;
+    tapeLeft: string;
+    tapeRotate: number;
+    position?: string;
+  };
   options?: EducationOption[];
-}
-
-export interface TimelineEntry {
-  year: string;
-  title: string;
-  description: string;
 }
 
 export interface Review {
@@ -49,9 +49,4 @@ export interface Review {
   name: string;
   role: string;
   text: string;
-}
-
-export interface GalleryItem extends Photo {
-  id: number;
-  category: "work" | "education" | "event";
 }

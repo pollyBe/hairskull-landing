@@ -1,62 +1,73 @@
-import Link from "next/link";
+import Image from "next/image";
 
 import Container from "@/components/layout/Container";
-import BrandWatermark from "@/components/ui/BrandWatermark";
 import Button from "@/components/ui/Button";
-import Eyebrow from "@/components/ui/Eyebrow";
-import PhotoFrame from "@/components/ui/PhotoFrame";
-import StatCard from "@/components/ui/StatCard";
-import { master } from "@/data/master";
-import { stats } from "@/data/stats";
+import HandNote from "@/components/ui/HandNote";
+import SheetLabel from "@/components/ui/SheetLabel";
+import { hero } from "@/data/hero";
+import heroSkull from "@/assets/images/hero-skull.png";
 
 // Entrance animations are pure CSS (motion-safe:animate-*), so this stays a Server Component
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden border-b border-border">
+    <section className="relative">
       <Container>
-        <div className="grid min-h-[calc(100svh-var(--spacing-header))] items-center gap-10 py-16 sm:gap-12 sm:py-20 lg:grid-cols-2 lg:gap-24 lg:py-24">
-          {/* Text — below the photo on mobile, left column on desktop */}
-          <div className="order-2 lg:order-1">
-            <Eyebrow className="mb-6 motion-safe:animate-enter sm:mb-8">
-              {master.city}
-            </Eyebrow>
+        <div className="grid items-center pt-6 pb-18 min-[620px]:grid-cols-[3fr_2fr] lg:pb-20">
+          <div className="relative z-10 flex flex-col items-center gap-7 py-6 text-center min-[620px]:items-start min-[620px]:text-left lg:py-10">
+            <SheetLabel className="motion-safe:animate-enter">
+              {hero.sheetLabel}
+            </SheetLabel>
 
-            <h1 className="font-serif text-4xl leading-tight motion-safe:animate-rise motion-safe:[animation-delay:100ms] sm:text-5xl sm:leading-none md:text-6xl lg:text-7xl xl:text-8xl">
-              {master.heroTitle}
+            <h1 className="font-display text-[clamp(56px,17vw,76px)] leading-[0.86] font-light tracking-[-0.02em] motion-safe:animate-rise motion-safe:[animation-delay:100ms] min-[620px]:text-[clamp(76px,11.5vw,184px)] min-[620px]:whitespace-nowrap">
+              {hero.title.line1}
+              <br />
+              <span className="min-[620px]:pl-[0.6em]">
+                {hero.title.line2Lead}
+                <em className="text-gold italic">{hero.title.line2Accent}</em>
+              </span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-muted motion-safe:animate-enter motion-safe:[animation-delay:220ms] sm:mt-8 sm:leading-8">
-              {master.heroDescription}
-            </p>
+            <HandNote
+              arrow
+              rotate={-3}
+              className="text-[clamp(30px,2.8vw,42px)] motion-safe:animate-enter motion-safe:[animation-delay:220ms] min-[620px]:pl-[12%] [&>span]:max-w-[460px]"
+            >
+              {hero.note}
+            </HandNote>
 
-            <div className="mt-8 flex flex-wrap gap-3 motion-safe:animate-enter motion-safe:[animation-delay:360ms] sm:mt-10 sm:gap-4">
+            <div className="flex flex-wrap justify-center gap-4 pt-3 motion-safe:animate-enter motion-safe:[animation-delay:360ms] min-[620px]:justify-start">
               <Button asChild>
-                <Link href="/#education">Обучение</Link>
+                <a href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
               </Button>
-              <Button asChild variant="secondary">
-                <Link href="/#about">О мастере</Link>
+              <Button asChild variant="outline">
+                <a href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
               </Button>
             </div>
           </div>
 
-          {/* Visual — above the text on mobile */}
-          <div className="relative order-1 motion-safe:animate-enter motion-safe:[animation-delay:150ms] lg:order-2">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-16 bg-[radial-gradient(circle_at_center,color-mix(in_oklab,var(--color-gold)_12%,transparent),transparent_70%)]"
+          <div className="relative flex justify-center motion-safe:animate-enter motion-safe:[animation-delay:150ms]">
+            <Image
+              src={heroSkull}
+              alt={hero.skullAlt}
+              preload
+              sizes="(min-width: 620px) 444px, 280px"
+              className="block h-[480px] w-auto max-w-full object-contain min-[620px]:h-[clamp(480px,70vw,760px)]"
             />
 
-            <PhotoFrame
-              photo={master.photo}
-              placeholder={<BrandWatermark />}
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              preload
-              className="max-h-[60svh] sm:max-h-none"
+            <HandNote
+              as="p"
+              tone="text"
+              rotate={4}
+              className="absolute top-10 right-0 text-[22px] min-[620px]:top-[120px] min-[620px]:text-[26px]"
             >
-              <div className="absolute bottom-4 left-4 z-10 sm:bottom-6 sm:left-6">
-                <StatCard {...stats.experience} />
-              </div>
-            </PhotoFrame>
+              {hero.skullNote[0]}
+              <br />
+              {hero.skullNote[1]}
+            </HandNote>
+
+            <p className="absolute bottom-6 left-0 font-mono text-[11px] text-text-dim min-[620px]:bottom-[60px]">
+              {hero.skullFig}
+            </p>
           </div>
         </div>
       </Container>

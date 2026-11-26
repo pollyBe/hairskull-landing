@@ -1,64 +1,43 @@
-import Link from "next/link";
-
-import Container from "@/components/layout/Container";
+import Section from "@/components/layout/Section";
 import Button from "@/components/ui/Button";
 import EducationCard from "@/components/ui/EducationCard";
 import FadeIn from "@/components/ui/FadeIn";
-import SectionTitle from "@/components/ui/SectionTitle";
-import { educationFormats, educationIntro } from "@/data/education";
+import SheetLabel from "@/components/ui/SheetLabel";
+import { education, educationFormats } from "@/data/education";
+import { cn } from "@/lib/utils";
 
-interface EducationFormatsSectionProps {
-  /** "page" is used on /education, where the link to that page is redundant */
-  variant?: "preview" | "page";
-}
-
-export default function EducationFormatsSection({
-  variant = "preview",
-}: EducationFormatsSectionProps) {
+export default function EducationFormatsSection() {
   return (
-    <section id="education" className="border-b border-border py-24 lg:py-28">
-      <Container>
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <FadeIn>
-            <SectionTitle
-              tag="Обучение"
-              title={
-                <>
-                  Форматы <em className="text-gold">обучения</em>
-                </>
-              }
-            />
+    <Section id="edu">
+      <div className="flex flex-wrap items-end justify-between gap-10">
+        <FadeIn className="flex max-w-[700px] flex-col gap-5">
+          <SheetLabel>{education.sheetLabel}</SheetLabel>
+          <h2 className="font-display text-[clamp(56px,6vw,100px)] leading-[0.9] font-light">
+            Форматы <em className="text-gold italic">обучения</em>
+          </h2>
+          <p className="text-base leading-[1.85] font-light text-text-muted">
+            {education.intro}
+          </p>
+        </FadeIn>
 
-            <p className="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">
-              {educationIntro}
-            </p>
+        <FadeIn delay={0.15}>
+          <Button asChild>
+            <a href={education.cta.href}>{education.cta.label}</a>
+          </Button>
+        </FadeIn>
+      </div>
+
+      <div className="mt-16 grid gap-16 lg:mt-[72px] lg:grid-cols-2 lg:gap-[72px]">
+        {educationFormats.map(({ id, ...format }, index) => (
+          <FadeIn
+            key={id}
+            delay={index * 0.1}
+            className={cn(index % 2 === 1 && "lg:pt-16")}
+          >
+            <EducationCard {...format} index={index} />
           </FadeIn>
-
-          <FadeIn delay={0.15} className="flex flex-wrap gap-4">
-            {variant === "preview" && (
-              <Button asChild variant="secondary">
-                <Link href="/education">О курсе</Link>
-              </Button>
-            )}
-            <Button asChild>
-              <a href="#contact">Записаться</a>
-            </Button>
-          </FadeIn>
-        </div>
-
-        <div className="mt-16 grid gap-6 lg:grid-cols-2">
-          {educationFormats.map((format, index) => (
-            <FadeIn key={format.id} delay={index * 0.1}>
-              <EducationCard
-                title={format.title}
-                description={format.description}
-                options={format.options}
-                index={index}
-              />
-            </FadeIn>
-          ))}
-        </div>
-      </Container>
-    </section>
+        ))}
+      </div>
+    </Section>
   );
 }

@@ -1,50 +1,58 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import Container from "./Container";
-import MobileMenu from "./MobileMenu";
-
-import { navigation } from "@/constants/navigation";
+import { navigation, navNumber } from "@/constants/navigation";
 import { contacts } from "@/data/contacts";
+import logo from "@/assets/images/logo-hairskull-light.png";
+
+import Container from "./Container";
+import HeaderShell from "./HeaderShell";
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+    <HeaderShell>
       <Container>
-        <div className="flex h-header items-center justify-between">
-          <Link
-            href="/"
-            className="font-serif text-xl tracking-[0.25em] text-gold"
-          >
-            HAIRSKULL
+        <div className="flex h-header items-center justify-between gap-6">
+          <Link href="/#top" className="shrink-0">
+            <Image
+              src={logo}
+              alt="Hair Skull"
+              preload
+              sizes="58px"
+              className="h-11 w-auto lg:h-[58px]"
+            />
           </Link>
 
           <nav aria-label="Основная навигация" className="hidden lg:block">
-            <ul className="flex items-center gap-10">
-              {navigation.map((item) => (
+            <ul className="flex items-center gap-8">
+              {navigation.map((item, i) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-xs tracking-[0.2em] text-muted uppercase transition-colors hover:text-gold"
+                    className="font-mono text-xs tracking-[0.08em] text-text uppercase transition-colors hover:text-gold"
                   >
-                    {item.label}
+                    {navNumber(i)} {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <a
-            href={contacts.telegram.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden text-xs tracking-[0.2em] text-gold uppercase transition-opacity hover:opacity-70 lg:block"
-          >
-            Telegram
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href={contacts.telegram.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden border border-gold px-[18px] py-3 font-mono text-xs tracking-[0.08em] text-gold uppercase transition-colors hover:border-gold-hover hover:text-gold-hover md:inline-block"
+            >
+              Telegram <span aria-hidden>↗</span>
+            </a>
 
-          <MobileMenu />
+            <MobileMenu />
+          </div>
         </div>
       </Container>
-    </header>
+    </HeaderShell>
   );
 }

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#080808",
+  themeColor: "#050505",
   colorScheme: "dark",
 };
 
@@ -52,9 +52,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Перейти к содержимому
         </a>
 
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <div id="top" className="min-h-dvh paper-grid">
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

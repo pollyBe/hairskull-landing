@@ -15,8 +15,8 @@ export default function OpengraphImage() {
         flexDirection: "column",
         justifyContent: "center",
         padding: "80px",
-        background: "#080808",
-        color: "#f0ece4",
+        background: "#050505",
+        color: "#edeae4",
         borderBottom: "8px solid #c9a84c",
       }}
     >
@@ -36,7 +36,7 @@ export default function OpengraphImage() {
       >
         HAIRSKULL
       </div>
-      <div style={{ marginTop: 24, fontSize: 40, color: "#aaa4a4" }}>
+      <div style={{ marginTop: 24, fontSize: 40, color: "#bdb8b0" }}>
         Alexey Platun · Hair stylist & educator
       </div>
     </div>,

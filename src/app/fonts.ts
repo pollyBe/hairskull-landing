@@ -21,8 +21,8 @@ import localFont from "next/font/local";
 export const cormorantLatin = localFont({
   src: [
     {
-      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2",
-      weight: "500",
+      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-300-normal.woff2",
+      weight: "300",
       style: "normal",
     },
     {
@@ -31,8 +31,13 @@ export const cormorantLatin = localFont({
       style: "normal",
     },
     {
-      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-italic.woff2",
-      weight: "400",
+      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-300-italic.woff2",
+      weight: "300",
       style: "italic",
     },
   ],
@@ -50,8 +55,8 @@ export const cormorantLatin = localFont({
 export const cormorantCyrillic = localFont({
   src: [
     {
-      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-cyrillic-500-normal.woff2",
-      weight: "500",
+      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-cyrillic-300-normal.woff2",
+      weight: "300",
       style: "normal",
     },
     {
@@ -60,8 +65,13 @@ export const cormorantCyrillic = localFont({
       style: "normal",
     },
     {
-      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-cyrillic-400-italic.woff2",
-      weight: "400",
+      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-cyrillic-500-normal.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-cyrillic-300-italic.woff2",
+      weight: "300",
       style: "italic",
     },
   ],
@@ -75,10 +85,10 @@ export const cormorantCyrillic = localFont({
   adjustFontFallback: "Times New Roman",
 });
 
-export const montserratLatin = localFont({
-  src: "../../node_modules/@fontsource-variable/montserrat/files/montserrat-latin-wght-normal.woff2",
-  weight: "100 900",
-  variable: "--font-montserrat-latin",
+export const caveatLatin = localFont({
+  src: "../../node_modules/@fontsource-variable/caveat/files/caveat-latin-wght-normal.woff2",
+  weight: "400 700",
+  variable: "--font-caveat-latin",
   declarations: [
     {
       prop: "unicode-range",
@@ -89,10 +99,84 @@ export const montserratLatin = localFont({
   adjustFontFallback: false,
 });
 
-export const montserratCyrillic = localFont({
-  src: "../../node_modules/@fontsource-variable/montserrat/files/montserrat-cyrillic-wght-normal.woff2",
+export const caveatCyrillic = localFont({
+  src: "../../node_modules/@fontsource-variable/caveat/files/caveat-cyrillic-wght-normal.woff2",
+  weight: "400 700",
+  variable: "--font-caveat-cyrillic",
+  declarations: [
+    {
+      prop: "unicode-range",
+      value: "U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116",
+    },
+  ],
+  adjustFontFallback: "Arial",
+});
+
+export const plexMonoLatin = localFont({
+  src: [
+    {
+      path: "../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  variable: "--font-plex-mono-latin",
+  declarations: [
+    {
+      prop: "unicode-range",
+      value:
+        "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+    },
+  ],
+  adjustFontFallback: false,
+});
+
+export const plexMonoCyrillic = localFont({
+  src: [
+    {
+      path: "../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-400-normal.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-cyrillic-500-normal.woff2",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  variable: "--font-plex-mono-cyrillic",
+  declarations: [
+    {
+      prop: "unicode-range",
+      value: "U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116",
+    },
+  ],
+  adjustFontFallback: "Arial",
+});
+
+export const interLatin = localFont({
+  src: "../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
   weight: "100 900",
-  variable: "--font-montserrat-cyrillic",
+  variable: "--font-inter-latin",
+  declarations: [
+    {
+      prop: "unicode-range",
+      value:
+        "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+    },
+  ],
+  adjustFontFallback: false,
+});
+
+export const interCyrillic = localFont({
+  src: "../../node_modules/@fontsource-variable/inter/files/inter-cyrillic-wght-normal.woff2",
+  weight: "100 900",
+  variable: "--font-inter-cyrillic",
   declarations: [
     {
       prop: "unicode-range",
@@ -105,8 +189,12 @@ export const montserratCyrillic = localFont({
 export const fontVariables = [
   cormorantLatin,
   cormorantCyrillic,
-  montserratLatin,
-  montserratCyrillic,
+  caveatLatin,
+  caveatCyrillic,
+  plexMonoLatin,
+  plexMonoCyrillic,
+  interLatin,
+  interCyrillic,
 ]
   .map((font) => font.variable)
   .join(" ");

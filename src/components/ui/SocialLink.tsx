@@ -1,18 +1,18 @@
 import type { ContactLink } from "@/types/content";
 
 const rowClassName =
-  "flex items-center justify-between gap-4 border-b border-border py-5 sm:py-6";
+  "flex items-center justify-between gap-4 border-b border-line-3 py-[22px] font-mono text-sm";
 
 export default function SocialLink({ label, value, href }: ContactLink) {
-  const inner = (
-    <>
-      <span className="text-sm text-muted">{label}</span>
-      <span className="transition-colors group-hover:text-gold">{value}</span>
-    </>
-  );
+  const labelNode = <span className="text-text-dim uppercase">{label}</span>;
 
   if (!href) {
-    return <div className={rowClassName}>{inner}</div>;
+    return (
+      <div className={rowClassName}>
+        {labelNode}
+        <span>{value}</span>
+      </div>
+    );
   }
 
   return (
@@ -22,7 +22,10 @@ export default function SocialLink({ label, value, href }: ContactLink) {
       rel="noopener noreferrer"
       className={`group ${rowClassName}`}
     >
-      {inner}
+      {labelNode}
+      <span className="transition-colors group-hover:text-gold">
+        {value} <span aria-hidden>↗</span>
+      </span>
     </a>
   );
 }

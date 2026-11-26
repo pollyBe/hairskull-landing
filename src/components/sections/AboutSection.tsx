@@ -1,97 +1,69 @@
-import Link from "next/link";
+import Image from "next/image";
 
-import Container from "@/components/layout/Container";
-import Button from "@/components/ui/Button";
+import Section from "@/components/layout/Section";
 import FadeIn from "@/components/ui/FadeIn";
-import PhotoFrame from "@/components/ui/PhotoFrame";
-import SectionTitle from "@/components/ui/SectionTitle";
+import OutlineNumber from "@/components/ui/OutlineNumber";
+import SheetLabel from "@/components/ui/SheetLabel";
 import { master } from "@/data/master";
 import { stats } from "@/data/stats";
+import portrait from "@/assets/images/about-portrait.jpg";
 
-const aboutStats = [
-  stats.firstPlaces,
-  stats.experience,
-  stats.prizePlaces,
-  stats.academies,
-];
+const aboutStats = [stats.firstPlaces, stats.prizePlaces, stats.academies];
 
-interface AboutSectionProps {
-  /** "preview" on the home page (h2 + link to /about), "page" opens /about (h1) */
-  variant?: "preview" | "page";
-}
-
-export default function AboutSection({
-  variant = "preview",
-}: AboutSectionProps) {
-  const isPage = variant === "page";
+export default function AboutSection() {
+  const [leadText, leadAccent, leadTail] = master.about.lead;
 
   return (
-    <section
-      id="about"
-      className="border-b border-border py-20 sm:py-24 lg:py-28"
-    >
-      <Container>
-        <div className="grid items-center gap-10 sm:gap-12 md:grid-cols-2 md:gap-10 lg:gap-16">
-          <FadeIn direction="left">
-            <PhotoFrame
-              photo={master.photo}
-              sizes="(min-width: 768px) 50vw, 100vw"
-              placeholder={
-                <span className="text-xs tracking-[0.2em] text-muted/40 uppercase">
-                  Фото
+    <Section id="about">
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <FadeIn direction="left" className="relative min-w-0">
+          <Image
+            src={portrait}
+            alt={`${master.fullName}, портрет`}
+            placeholder="blur"
+            sizes="(min-width: 1440px) 664px, (min-width: 1024px) 46vw, 100vw"
+            className="block h-[520px] w-full object-cover object-right contrast-[1.05] lg:h-[760px]"
+          />
+
+          <SheetLabel className="absolute top-6 left-6">
+            ЛИСТ 02 — МАСТЕР
+          </SheetLabel>
+
+          <h2 className="absolute bottom-8 left-6 font-display text-[clamp(64px,8vw,132px)] leading-[0.85] font-light tracking-[-0.02em]">
+            {master.firstName}
+            <br />
+            <em className="text-gold italic">{master.lastName}</em>
+          </h2>
+        </FadeIn>
+
+        <FadeIn delay={0.1} className="flex flex-col gap-8">
+          <p className="font-display text-[clamp(28px,2.4vw,38px)] leading-[1.25]">
+            {leadText}
+            <em className="text-gold italic">{leadAccent}</em>
+            {leadTail}
+          </p>
+
+          <p className="text-base leading-[1.85] font-light text-text-muted">
+            {master.about.text}
+          </p>
+
+          <ul className="border-t border-line-2">
+            {aboutStats.map((item) => (
+              <li
+                key={item.label}
+                className="flex items-baseline gap-6 border-b border-line-2 py-[18px]"
+              >
+                <OutlineNumber className="w-[110px] shrink-0 text-[64px]">
+                  {item.value.padStart(2, "0")}
+                </OutlineNumber>
+                <span className="font-mono text-[13px] tracking-[0.06em] uppercase">
+                  {item.label}
                 </span>
-              }
-            />
-          </FadeIn>
-
-          <div>
-            <FadeIn delay={0.1}>
-              <SectionTitle
-                as={isPage ? "h1" : "h2"}
-                tag="О мастере"
-                title={
-                  <>
-                    {master.firstName}{" "}
-                    <em className="text-gold">{master.lastName}</em>
-                  </>
-                }
-              />
-            </FadeIn>
-
-            <FadeIn delay={0.2} className="space-y-4">
-              {master.bio.map((paragraph) => (
-                <p
-                  key={paragraph}
-                  className="text-base leading-7 text-muted sm:leading-8"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </FadeIn>
-
-            <FadeIn delay={0.3}>
-              <dl className="mt-8 grid grid-cols-2 gap-4 border-t border-border pt-8 sm:mt-10 sm:pt-10">
-                {aboutStats.map((item) => (
-                  <div key={item.label} className="flex flex-col-reverse">
-                    <dt className="mt-1 text-xs tracking-[0.18em] text-muted uppercase">
-                      {item.label}
-                    </dt>
-                    <dd className="font-serif text-3xl text-gold sm:text-4xl">
-                      {item.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-
-              {!isPage && (
-                <Button asChild variant="secondary" className="mt-10">
-                  <Link href="/about">Подробнее о пути мастера</Link>
-                </Button>
-              )}
-            </FadeIn>
-          </div>
-        </div>
-      </Container>
-    </section>
+              </li>
+            ))}
+          </ul>
+        </FadeIn>
+      </div>
+    </Section>
   );
 }

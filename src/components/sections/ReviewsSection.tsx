@@ -1,7 +1,7 @@
-import Container from "@/components/layout/Container";
+import Section from "@/components/layout/Section";
 import FadeIn from "@/components/ui/FadeIn";
 import ReviewCard from "@/components/ui/ReviewCard";
-import SectionTitle from "@/components/ui/SectionTitle";
+import SheetLabel from "@/components/ui/SheetLabel";
 import { reviews } from "@/data/reviews";
 
 export default function ReviewsSection() {
@@ -9,31 +9,25 @@ export default function ReviewsSection() {
   if (reviews.length === 0) return null;
 
   return (
-    <section id="reviews" className="border-b border-border py-24 lg:py-28">
-      <Container>
-        <FadeIn>
-          <SectionTitle
-            tag="Отзывы"
-            title={
-              <>
-                Говорят <em className="text-gold">ученики</em>
-              </>
-            }
-          />
-        </FadeIn>
+    <Section id="reviews">
+      <FadeIn className="flex flex-col gap-5">
+        <SheetLabel>ОТЗЫВЫ</SheetLabel>
+        <h2 className="font-display text-[clamp(56px,6vw,100px)] leading-[0.9] font-light">
+          Говорят <em className="text-gold italic">ученики</em>
+        </h2>
+      </FadeIn>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {reviews.map((review, i) => (
-            <FadeIn key={review.id} delay={i * 0.1}>
-              <ReviewCard
-                name={review.name}
-                role={review.role}
-                text={review.text}
-              />
-            </FadeIn>
-          ))}
-        </div>
-      </Container>
-    </section>
+      <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {reviews.map((review, i) => (
+          <FadeIn key={review.id} delay={i * 0.1}>
+            <ReviewCard
+              name={review.name}
+              role={review.role}
+              text={review.text}
+            />
+          </FadeIn>
+        ))}
+      </div>
+    </Section>
   );
 }

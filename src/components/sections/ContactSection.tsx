@@ -1,38 +1,59 @@
-import Container from "@/components/layout/Container";
+import Section from "@/components/layout/Section";
 import FadeIn from "@/components/ui/FadeIn";
-import SectionTitle from "@/components/ui/SectionTitle";
+import HandNote from "@/components/ui/HandNote";
+import SheetLabel from "@/components/ui/SheetLabel";
 import SocialLink from "@/components/ui/SocialLink";
-import { contacts } from "@/data/contacts";
+import { contactSection, contacts } from "@/data/contacts";
+
+function splitHandle(handle: string, accent: string): [string, string] {
+  const i = handle.toLowerCase().lastIndexOf(accent.toLowerCase());
+  return i > 0 ? [handle.slice(0, i), handle.slice(i)] : [handle, ""];
+}
 
 export default function ContactSection() {
+  const { telegram } = contacts;
+  const [handleLead, handleAccent] = splitHandle(
+    telegram.value,
+    contactSection.handleAccent,
+  );
+
   return (
-    <section id="contact" className="py-24 lg:py-32">
-      <Container>
-        <div className="grid gap-16 lg:grid-cols-2">
-          <FadeIn>
-            <SectionTitle
-              tag="Контакты"
-              title={
-                <>
-                  Обучение и <em className="text-gold">сотрудничество</em>
-                </>
-              }
-            />
+    <Section id="contacts" className="lg:pb-20">
+      <FadeIn className="flex flex-col gap-12">
+        <SheetLabel>{contactSection.sheetLabel}</SheetLabel>
 
-            <p className="mt-8 max-w-xl text-base leading-8 text-muted sm:text-lg">
-              Если вы хотите пройти обучение, организовать мастер-класс,
-              провести образовательное мероприятие или обсудить сотрудничество —
-              свяжитесь удобным способом
-            </p>
-          </FadeIn>
+        <a
+          href={telegram.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Написать в Telegram ${telegram.value}`}
+          className="self-start font-display text-[clamp(64px,12vw,200px)] leading-[0.85] font-light tracking-[-0.03em] text-text transition-colors hover:text-gold-hover"
+        >
+          {handleLead}
+          {handleAccent && <em className="text-gold italic">{handleAccent}</em>}
+        </a>
+      </FadeIn>
 
-          <FadeIn delay={0.15}>
-            <SocialLink {...contacts.telegram} />
-            <SocialLink {...contacts.instagram} />
-            <SocialLink {...contacts.location} />
-          </FadeIn>
+      <FadeIn
+        delay={0.1}
+        className="mt-12 grid items-start gap-14 lg:grid-cols-2"
+      >
+        <p className="max-w-[560px] text-base leading-[1.85] font-light text-text-muted">
+          {contactSection.text}
+        </p>
+
+        <div className="border-t border-line-3">
+          <SocialLink {...contacts.telegram} />
+          <SocialLink {...contacts.instagram} />
+          <SocialLink {...contacts.location} />
         </div>
-      </Container>
-    </section>
+      </FadeIn>
+
+      <FadeIn delay={0.2} className="mt-12">
+        <HandNote rotate={-2} className="text-[28px] md:text-[34px]">
+          {contactSection.note}
+        </HandNote>
+      </FadeIn>
+    </Section>
   );
 }

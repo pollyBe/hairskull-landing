@@ -4,16 +4,16 @@ type ReviewCardProps = Omit<Review, "id">;
 
 export default function ReviewCard({ name, role, text }: ReviewCardProps) {
   return (
-    <figure className="flex h-full flex-col border border-border bg-surface p-6 sm:p-8">
-      <blockquote className="flex-1 text-base leading-7 text-muted sm:leading-8">
-        <p>&ldquo;{text}&rdquo;</p>
+    <figure className="flex h-full flex-col border-t border-line-3 pt-6">
+      <blockquote className="flex-1 font-display text-[26px] leading-[1.25] font-light italic">
+        <p>«{text}»</p>
       </blockquote>
 
-      <figcaption className="mt-6 border-t border-border pt-5 sm:mt-8 sm:pt-6">
-        <div className="font-serif text-lg">{name}</div>
-        <div className="mt-1 text-xs tracking-[0.2em] text-gold uppercase">
-          {role}
-        </div>
+      <figcaption className="mt-6 flex flex-col gap-1">
+        <span className="font-mono text-[13px] tracking-[0.06em] uppercase">
+          {name}
+        </span>
+        <span className="text-sm font-light text-text-muted">{role}</span>
       </figcaption>
     </figure>
   );
